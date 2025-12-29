@@ -1,11 +1,20 @@
 import random
 
-def gerador_numeros_mega(qtd):    
+def gerador_numeros_mega(qtd): 
+    qtd = len(jogos_ms)+qtd   
     while len(jogos_ms) < qtd:
         aposta = sorted(random.sample(range(1,61),6)) 
         if aposta not in jogos_ms.values():
-            chave = f'Jogo {len(jogos_ms)+1}'
-            jogos_ms[chave] = aposta
+            jogo = f'{len(jogos_ms)+1}'
+            jogos_ms[jogo] = aposta
+
+def gerador_numeros_lotofacil(qtd):
+    qtd = len(jogos_lf)+qtd
+    while len(jogos_lf) < qtd:
+        aposta = sorted(random.sample(range(1,26),15))
+        jogo = f'{len(jogos_lf)+1}'
+        jogos_lf[jogo] = aposta
+
 
 
 def lista_jogos(jogos):
@@ -23,6 +32,7 @@ menu = """
 """
 
 jogos_ms = {}
+jogos_lf = {}
 
 
 while True:
@@ -46,7 +56,20 @@ while True:
             
             gerador_numeros_mega(qtd_jogos)
             lista_jogos(jogos_ms)
+        
+        case 2:
+            ...
+        
+        case 3:
+            ...
+
+        case 4:
+            break
+        
+        case _:
+            print('Entrada Invalida! Escolha opção correta!')
+            continue
             
 
 
-    break
+    
