@@ -1,16 +1,20 @@
 import random
 
 def gerador_numeros(limitador_jogo, qtd_numeros_jogos):
+    return sorted(random.sample(range(1,limitador_jogo+1), qtd_numeros_jogos))    
+     
+
 
 def gerador_jogos(modalidade, qtd, limite, qtd_min):
-    qtd = len(jogos_ms)+qtd   
-    while len(jogos_ms) < qtd:
-        aposta = sorted(random.sample(range(1,61),6)) 
+    qtd = len(modalidade)+qtd   
+    while len(modalidade) < qtd:
+        aposta = gerador_numeros(limite, qtd_min)
 
-        if aposta not in jogos_ms.values():
-            jogo = f'{len(jogos_ms)+1}'
-            jogos_ms[jogo] = aposta
-    print('Jogos Mega Sena Realizado com sucesso:')
+        if aposta not in modalidade.values():
+            jogo = f'{len(modalidade)+1}'
+            modalidade[jogo] = aposta
+
+    print('Jogos Realizado com sucesso!')
 
 def solicita_quantidade():
     while True:
@@ -51,11 +55,9 @@ while True:
         continue
 
     match menu_selecionado:
-        case 1: 
-            
-            quantidade = solicita_quantidade()                            
-            
-            gerador_numeros(menu_selecionado, qtd_jogos)
+        case 1:             
+            quantidade = solicita_quantidade()                         
+            gerador_numeros(jogos_ms, quantidade, 60, 6)
             lista_jogos(jogos_ms)
         
         case 2:
