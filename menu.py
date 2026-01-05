@@ -1,9 +1,7 @@
 import random
 
 def gerador_numeros(limitador_jogo, qtd_numeros_jogos):
-    return sorted(random.sample(range(1,limitador_jogo+1), qtd_numeros_jogos))    
-     
-
+    return sorted(random.sample(range(1,limitador_jogo+1), qtd_numeros_jogos))   
 
 def gerador_jogos(modalidade, qtd, limite, qtd_min):
     qtd = len(modalidade)+qtd   
@@ -24,15 +22,11 @@ def solicita_quantidade():
             
         except ValueError:
             print('Quantidade Invalida! Digite novamente!')
-            continue 
-        
-
+            continue        
 
 def lista_jogos(jogos):
     for chave, numeros in jogos.items():
-        print(chave, numeros)
-
-    
+        print(chave, numeros)    
 
 menu = """
 == Digite o numero da aposta desejada ==        
@@ -77,6 +71,3 @@ while True:
             print('Entrada Invalida! Escolha opção correta!')
             continue
             
-
-
-    
