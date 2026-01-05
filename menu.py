@@ -1,26 +1,31 @@
 import random
 
-def gerador_numeros(opcao, qtd):
-    match opcao:
-        # Gerador Mega Sena
-        case 1:
-            qtd = len(jogos_ms)+qtd   
-            while len(jogos_ms) < qtd:
-                aposta = sorted(random.sample(range(1,61),6)) 
+def gerador_numeros(limitador_jogo, qtd_numeros_jogos):
+    return sorted(random.sample(range(1,limitador_jogo+1), qtd_numeros_jogos))    
+     
 
-                if aposta not in jogos_ms.values():
-                    jogo = f'{len(jogos_ms)+1}'
-                    jogos_ms[jogo] = aposta
-            print('Jogos Mega Sena Realizado com sucesso:')
+
+def gerador_jogos(modalidade, qtd, limite, qtd_min):
+    qtd = len(modalidade)+qtd   
+    while len(modalidade) < qtd:
+        aposta = gerador_numeros(limite, qtd_min)
+
+        if aposta not in modalidade.values():
+            jogo = f'{len(modalidade)+1}'
+            modalidade[jogo] = aposta
+
+    print('Jogos Realizado com sucesso!')
+
+def solicita_quantidade():
+    while True:
+        try:
+            qtd_jogos = int(input('Digite a quantidade de jogos que quer gerar:'))
+            return qtd_jogos
+            
+        except ValueError:
+            print('Quantidade Invalida! Digite novamente!')
+            continue 
         
-        case 2:
-            qtd = len(jogos_lf)+qtd
-            while len(jogos_lf) < qtd:
-                aposta = sorted(random.sample(range(1,26),15))
-                
-                if aposta not in jogos_lf.values():
-                    jogo = f'{len(jogos_lf)+1}'
-                    jogos_lf[jogo] = aposta
 
 
 def lista_jogos(jogos):
@@ -50,34 +55,18 @@ while True:
         continue
 
     match menu_selecionado:
-        case 1: 
-            while True:
-                try:
-                    qtd_jogos = int(input('Digite a quantidade de jogos que quer gerar:'))
-                    print()
-                    break
-                except ValueError:
-                    print('Quantidade Invalida! Digite novamente!')
-                    continue            
-            
-            gerador_numeros(menu_selecionado, qtd_jogos)
+        case 1:             
+            quantidade = solicita_quantidade()                         
+            gerador_jogos(jogos_ms, quantidade, 60, 6)
             lista_jogos(jogos_ms)
         
         case 2:
-            while True:
-                try:
-                    qtd_jogos = int(input('Digite a quantidade de jogos que quer gerar:'))
-                    print()
-                    break
-                except ValueError:
-                    print('Entrada Invalida! tente novamente!')
-                    continue
-            
-            gerador_numeros(menu_selecionado, qtd_jogos)
+            quantidade = solicita_quantidade()
+            gerador_jogos(jogos_lf, quantidade, 25, 15)
             lista_jogos(jogos_lf)
         
         case 3:
-            ...
+            
 
         case 4:
             break

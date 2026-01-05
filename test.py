@@ -57,7 +57,7 @@ while True:
     match menu_selecionado:
         case 1:             
             quantidade = solicita_quantidade()                         
-            gerador_numeros(jogos_ms, quantidade, 60, 6)
+            gerador_jogos(jogos_ms, quantidade, 60, 6)
             lista_jogos(jogos_ms)
         
         case 2:
