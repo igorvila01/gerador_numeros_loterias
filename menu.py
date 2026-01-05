@@ -44,7 +44,7 @@ menu = """
 
 jogos_ms = {}
 jogos_lf = {}
-
+jogos_quina = {}
 
 while True:
     try:
@@ -66,7 +66,9 @@ while True:
             lista_jogos(jogos_lf)
         
         case 3:
-            
+            quantidade = solicita_quantidade()
+            gerador_jogos(jogos_quina, quantidade, 80, 5)
+            lista_jogos(jogos_quina)
 
         case 4:
             break
