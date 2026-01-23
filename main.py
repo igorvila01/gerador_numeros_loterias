@@ -1,17 +1,11 @@
-from scripts import gerador_jogos, solicita_quantidade, lista_jogos
+from scripts import gerador_jogos, solicita_quantidade, lista_jogos, mostrar_menu
 from data_loterias import jogos_ms, jogos_lf, jogos_quina
+import textwrap
 
-menu = """
-== Digite o numero da aposta desejada ==        
-1 - Mega Sena
-2 - Loto Facil
-3 - Quina
-4 - Sair
-"""
 
 while True:
     try:
-        menu_selecionado = int(input(menu))
+        menu_selecionado = int(input(mostrar_menu()))
 
     except ValueError:
         print('Menu Selecionado Inválido! Tente novamente!')
