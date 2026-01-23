@@ -1,32 +1,5 @@
-import random
-
-def gerador_numeros(limitador_jogo, qtd_numeros_jogos):
-    return sorted(random.sample(range(1,limitador_jogo+1), qtd_numeros_jogos))   
-
-def gerador_jogos(modalidade, qtd, limite, qtd_min):
-    qtd = len(modalidade)+qtd   
-    while len(modalidade) < qtd:
-        aposta = gerador_numeros(limite, qtd_min)
-
-        if aposta not in modalidade.values():
-            jogo = f'{len(modalidade)+1}'
-            modalidade[jogo] = aposta
-
-    print('Jogos Realizado com sucesso!')
-
-def solicita_quantidade():
-    while True:
-        try:
-            qtd_jogos = int(input('Digite a quantidade de jogos que quer gerar:'))
-            return qtd_jogos
-            
-        except ValueError:
-            print('Quantidade Invalida! Digite novamente!')
-            continue        
-
-def lista_jogos(jogos):
-    for chave, numeros in jogos.items():
-        print(chave, numeros)    
+from scripts import gerador_jogos, solicita_quantidade, lista_jogos
+from data_loterias import jogos_ms, jogos_lf, jogos_quina
 
 menu = """
 == Digite o numero da aposta desejada ==        
@@ -35,10 +8,6 @@ menu = """
 3 - Quina
 4 - Sair
 """
-
-jogos_ms = {}
-jogos_lf = {}
-jogos_quina = {}
 
 while True:
     try:
@@ -65,6 +34,7 @@ while True:
             lista_jogos(jogos_quina)
 
         case 4:
+            print('Saindo do programa... Boa sorte!')
             break
         
         case _:
